@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" ng-app="issueTrackingSystem">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,42 +12,44 @@
     <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
     <base href="/" />
 </head>
-<body cz-shortcut-listen="true">
-<div class="navbar navbar-default navbar-fixed-top">
+    <body ng-controller="MainController" cz-shortcut-listen="true">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="#/" class="navbar-brand">Issue Tracking System</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul ng-if="hasLoggedUser()" class="nav navbar-nav">
+                        <li>
+                            <a href="#/settings">Settings</a>
+                        </li>
+                        <li>
+                            <a href="#/changePassword">Change Password</a>
+                        </li>
+                        <li ng-controller="LogoutController" ng-click="logout()"><a href="#/logout">Logout</a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
     <div class="container">
-        <div class="navbar-header">
-            <a href="/" class="navbar-brand">Issue Tracking System</a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-            <ul ng-if="isAuthenticated" class="nav navbar-nav">
-                <li>
-                    <a href="#/settings">Settings</a>
-                </li>
-                <li>
-                    <a href="#/changePassword">Change Password</a>
-                </li>
-                <li>
-                    <a href="#/logout">Logout</a>
-                </li>
-            </ul>
-
-        </div>
+        <div ng-view />
     </div>
-</div>
 
-<div class="container">
-    <div ng-view />
-</div>
-
-<script src="app/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="app/bower_components/angular/angular.js"></script>
-<script src="app/bower_components/angular-route/angular-route.js"></script>
-<script src="app/app.js"></script>
-</body>
+    <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="app/bower_components/angular/angular.js"></script>
+    <script src="app/bower_components/angular-route/angular-route.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/home/home-controller.js"></script>
+    <script src="app/users/authentication.js"></script>
+    <script src="app/users/identity.js"></script>
+    <script src="app/common/main-controller.js"></script>
+    <script src="app/logout/logout-controller.js"></script>
+    </body>
 </html>
