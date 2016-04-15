@@ -14,18 +14,19 @@
             '$location',
             'authentication',
             'identity',
-            function HomeController($scope, $location, authentication, identity){
+            'notyService',
+            function HomeController($scope, $location, authentication, identity, notyService){
                 $scope.hasLoggedUser = identity.hasLoggedUser();
 
                 $scope.login = function(user){
                     authentication.loginUser(user)
                         .then(function(loggedInUser){
                             sessionStorage['authToken'] = loggedInUser.access_token;
-                            console.log(loggedInUser);
+                            notyService.showSuccess('Login successfull!');
                             $location.path('/asd');
                         },
                         function(err){
-                            console.log(err);
+                            notyService.showError('Login failed!');
                         });
                 };
 
@@ -33,22 +34,11 @@
                     authentication.registerUser(user)
                         .then(function(registeredUser) {
                             $scope.login({username: user.email, password: user.password});
-                            console.log(registeredUser);
+                            notyService.showSuccess('Register successfull!');
                         },
                         function(err){
-                            console.log(err);
+                            notyService.showError('Register failed!');
                         });
                 };
-
-                $scope.logout = function(){
-                    authentication.logout()
-                        .then(function(){
-                            sessionStorage.clear();
-                            console.log("suecces logout!");
-                        },
-                        function(err){
-                            console.log(err);
-                        });
-                }
             }]);
 }());

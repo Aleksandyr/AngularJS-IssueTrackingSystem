@@ -3,18 +3,18 @@
         .controller('LogoutController', [
             '$scope',
             'authentication',
-            function LogoutController($scope, authentication) {
+            'notyService',
+            function LogoutController($scope, authentication, notyService) {
                 $scope.logout = function(){
                     authentication.logout()
                         .then(
                             function success(){
                                 sessionStorage.clear();
-                                console.log('Logout successfull');
+                                notyService.showSuccess('Logout successfull!');
                             },
-                            function error(err){
-                                console.log('Logout unsuccessfull', err);
-                            }
-                        )
+                            function(err){
+                                notyService.showError('Logout failed!');
+                            });
                 };
             }]);
 }());

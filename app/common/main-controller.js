@@ -1,5 +1,5 @@
 (function(){
-    angular.module('issueTrackingSystem.common', [])
+    angular.module('issueTrackingSystem.common.mainController', [])
         .controller('MainController', [
             '$scope',
             'identity',

@@ -6,8 +6,9 @@
         'issueTrackingSystem.home',
         'issueTrackingSystem.users.authentication',
         'issueTrackingSystem.users.identity',
-        'issueTrackingSystem.common',
-        'issueTrackingSystem.logout'
+        'issueTrackingSystem.common.mainController',
+        'issueTrackingSystem.logout',
+        'issueTrackingSystem.common.notyService'
     ])
         .config(['$routeProvider', function($routeProvider) {
           $routeProvider.otherwise({redirectTo: '/'});
