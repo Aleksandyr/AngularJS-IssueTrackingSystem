@@ -1,5 +1,7 @@
 (function(){
-    angular.module('issueTrackingSystem.users.authentication', [])
+    'use strict';
+
+    angular.module('issueTrackingSystem.account.users.authentication', [])
         .factory('authentication', [
             '$http',
             '$q',

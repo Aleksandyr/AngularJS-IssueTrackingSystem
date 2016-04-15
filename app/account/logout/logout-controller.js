@@ -1,5 +1,7 @@
 (function(){
-    angular.module('issueTrackingSystem.logout', [])
+    'use strict';
+
+    angular.module('issueTrackingSystem.account.logout', [])
         .controller('LogoutController', [
             '$scope',
             'authentication',

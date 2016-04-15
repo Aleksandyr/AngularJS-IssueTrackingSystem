@@ -1,4 +1,6 @@
 (function(){
+    'use strict';
+
     angular.module('issueTrackingSystem.common.notyService', [])
         .factory('notyService', [function(){
             function showError(message) {

@@ -1,4 +1,6 @@
 (function(){
+    'use strict';
+
     angular.module('issueTrackingSystem.common.mainController', [])
         .controller('MainController', [
             '$scope',

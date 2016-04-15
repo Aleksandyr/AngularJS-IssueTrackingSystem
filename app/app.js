@@ -3,15 +3,30 @@
 
     angular.module('issueTrackingSystem', [
         'ngRoute',
+
         'issueTrackingSystem.home',
-        'issueTrackingSystem.users.authentication',
-        'issueTrackingSystem.users.identity',
+
+        'issueTrackingSystem.common.notyService',
         'issueTrackingSystem.common.mainController',
-        'issueTrackingSystem.logout',
-        'issueTrackingSystem.common.notyService'
+
+        'issueTrackingSystem.account.users.authentication',
+        'issueTrackingSystem.account.users.identity',
+        'issueTrackingSystem.account.logout',
+        'issueTrackingSystem.account.changePassword.service',
+        'issueTrackingSystem.account.changePassword.controller'
     ])
-        .config(['$routeProvider', function($routeProvider) {
-          $routeProvider.otherwise({redirectTo: '/'});
+        .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/')
+        .config(['$routeProvider', function($routeProvider){
+            $routeProvider
+                .otherwise({
+                    redirectTo: '/'
+                })
         }])
-        .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/');
+        .run(['$rootScope', '$location', 'identity', function($rootScope, $location, identity) {
+            $rootScope.$on('$locationChangeStart', function(event) {
+                if(!identity.hasLoggedUser()) {
+                    $location.path('/');
+                }
+            });
+        }]);
 }());
