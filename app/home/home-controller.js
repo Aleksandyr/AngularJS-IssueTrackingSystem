@@ -15,8 +15,11 @@
             'authentication',
             'identity',
             'notyService',
-            function HomeController($scope, $location, authentication, identity, notyService){
-                $scope.hasLoggedUser = identity.hasLoggedUser();
+            'mainService',
+            function HomeController($scope, $location, authentication, identity, notyService, mainService){
+                $scope.hasLoggedUser = identity.hasLoggedUser;
+
+                $scope.isAdmin = identity.isAdmin;
 
                 $scope.login = function(user){
                     authentication.loginUser(user)
@@ -46,6 +49,18 @@
                         function(err){
                             notyService.showError('Register failed!');
                         });
+                };
+
+                $scope.allUsers = function(){
+                    mainService.getAllUsers()
+                        .then(
+                            function success(data){
+                                $scope.users = data.data;
+                            },
+                            function error(err){
+                                console.log(err);
+                            }
+                        );
                 };
             }]);
 }());

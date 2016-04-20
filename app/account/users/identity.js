@@ -20,7 +20,7 @@ angular.module('issueTrackingSystem.account.users.identity', [])
 
             function isAdmin(){
                 if(sessionStorage['currentUser']){
-                    var current = JOSN.parse(sessionStorage.currentUser);
+                    var current = JSON.parse(sessionStorage.currentUser);
                     return current.isAdmin;
                 }
             }
@@ -31,6 +31,7 @@ angular.module('issueTrackingSystem.account.users.identity', [])
 
             return {
                 hasLoggedUser: hasLoggedUser,
-                getCurrentUser: getCurrentUser
+                getCurrentUser: getCurrentUser,
+                isAdmin: isAdmin
             };
         }]);

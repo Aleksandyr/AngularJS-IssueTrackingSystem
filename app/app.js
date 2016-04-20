@@ -8,12 +8,13 @@
 
         'issueTrackingSystem.common.notyService',
         'issueTrackingSystem.common.mainController',
+        'issueTrackingSystem.common.mainService',
 
         'issueTrackingSystem.account.users.authentication',
         'issueTrackingSystem.account.users.identity',
         'issueTrackingSystem.account.logout',
         'issueTrackingSystem.account.changePassword.service',
-        'issueTrackingSystem.account.changePassword.controller'
+        'issueTrackingSystem.account.changePassword.controller',
     ])
         .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/')
         .config(['$routeProvider', function($routeProvider){

@@ -26,7 +26,7 @@
                     <ul ng-if="hasLoggedUser()" class="nav navbar-nav">
                         <li><a href="#/dashboard">Dashboard</a></li>
                         <li><a href="#/projects/all">Projects</a></li>
-                        <li><a href="#/users/allUsers">All users</a></li>
+                        <li><a href="#/users/all">All users</a></li>
                     </ul>
                     <ul ng-if="hasLoggedUser()" class="nav navbar-nav navbar-right">
                         <li><a href="#/profile/password">Change password</a></li>
@@ -61,5 +61,6 @@
     <!--Common scripts-->
     <script src="app/common/main-controller.js"></script>
     <script src="app/common/notyService.js"></script>
+    <script src="app/common/main-service.js"></script>
     </body>
 </html>
