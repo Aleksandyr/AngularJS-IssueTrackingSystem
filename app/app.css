@@ -37,3 +37,10 @@ body {
   content: "";
   padding: 0;
 }
+
+.search{
+  margin-left:10px;
+}
+.deleteConfirmation{
+  width: 250px;
+}
