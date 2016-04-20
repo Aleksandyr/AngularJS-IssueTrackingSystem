@@ -6,6 +6,7 @@ angular.module('issueTrackingSystem.common.mainService', [])
             var deferred = $q.defer();
 
             $http.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.authToken;
+            
             $http.get(BASE_URL + 'Users/')
                 .then(function(response){
                     deferred.resolve(response);
