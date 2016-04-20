@@ -12,7 +12,12 @@ angular.module('issueTrackingSystem.account.users.allUsersController',
         '$scope',
         'allUsersService',
         'notyService',
-        function AllUsersController($scope, allUsersService, notyService){
+        'identity',
+        function AllUsersController($scope, allUsersService, notyService, identity){
+
+            $scope.isAdmin = function(){
+                return identity.isAdmin();
+            };
 
             $scope.allUsers = function(){
                 allUsersService.getAllUsers()

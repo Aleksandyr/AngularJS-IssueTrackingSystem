@@ -18,6 +18,13 @@ angular.module('issueTrackingSystem.account.users.identity', [])
                 return deferred.promise;
             }
 
+            function isAdmin(){
+                if(sessionStorage['currentUser']){
+                    var current = JOSN.parse(sessionStorage.currentUser);
+                    return current.isAdmin;
+                }
+            }
+
             function hasLoggedUser() {
                 return sessionStorage.authToken !== undefined;
             };
