@@ -2,6 +2,7 @@
 
 angular.module('issueTrackingSystem', [
     'ngRoute',
+    'ui.bootstrap.pagination',
 
     'issueTrackingSystem.home',
 
@@ -11,7 +12,6 @@ angular.module('issueTrackingSystem', [
 
     'issueTrackingSystem.account.users.authentication',
     'issueTrackingSystem.account.users.identity',
-    'issueTrackingSystem.account.logout',
     'issueTrackingSystem.account.changePassword.service',
     'issueTrackingSystem.account.changePassword.controller',
 

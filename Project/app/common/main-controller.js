@@ -6,7 +6,8 @@ angular.module('issueTrackingSystem.common.mainController', [])
         'identity',
         'mainService',
         'authentication',
-        function MainController($scope, identity, mainService, authentication) {
+        'notyService',
+        function MainController($scope, identity, mainService, authentication, notyService) {
             $scope.hasLoggedUser = identity.hasLoggedUser;
 
             $scope.isAdmin = identity.isAdmin;

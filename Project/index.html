@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/main.css">
     <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="app/app.css" />
-    <base href="/" />
 </head>
     <body ng-controller="MainController" cz-shortcut-listen="true">
         <div class="navbar navbar-default navbar-fixed-top">
@@ -31,7 +30,7 @@
                     <ul ng-if="hasLoggedUser()" class="nav navbar-nav navbar-right">
                         <li><a href="#/profile/password">Change password</a></li>
                         <li><a href="#/profile/me">My profile</a></li>
-                        <li ng-controller="LogoutController" ng-click="logout()"><a href="#/logout">Logout</a></li>
+                        <li ng-click="logout()"><a href="#/logout">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,6 +45,7 @@
     <script src="app/bower_components/angular/angular.js"></script>
     <script src="app/bower_components/angular-route/angular-route.js"></script>
     <script src="app/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <script src="app/bower_components/angular-ui-bootstrap-pagination/pagination.js"></script>
 
     <script src="app/app.js"></script>
 
@@ -62,7 +62,6 @@
     <!--Account scripts-->
     <script src="app/account/users/authentication.js"></script>
     <script src="app/account/users/identity.js"></script>
-    <script src="app/account/logout/logout-controller.js"></script>
     <script src="app/account/changePassword/change-password-service.js"></script>
     <script src="app/account/changePassword/change-password-controller.js"></script>
 
