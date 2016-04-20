@@ -22,8 +22,15 @@
                     authentication.loginUser(user)
                         .then(function(loggedInUser){
                             sessionStorage['authToken'] = loggedInUser.access_token;
+                            $location.path('/dashboard');
                             notyService.showSuccess('Login successfull!');
-                            $location.path('/asd');
+                            identity.getCurrentUser()
+                                .then(
+                                    function(data){
+                                        sessionStorage['currentUser'] = JSON.stringify(data)
+                                    }, function(err){
+                                        console.log(err);
+                                    })
                         },
                         function(err){
                             notyService.showError('Login failed!');

@@ -24,11 +24,13 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul ng-if="hasLoggedUser()" class="nav navbar-nav">
-                        <li><a href="#/">Dashboard</a></li>
-                        <li><a href="#">Projects</a></li>
+                        <li><a href="#/dashboard">Dashboard</a></li>
+                        <li><a href="#/projects/all">Projects</a></li>
+                        <li><a href="#/users/allUsers">All users</a></li>
                     </ul>
                     <ul ng-if="hasLoggedUser()" class="nav navbar-nav navbar-right">
                         <li><a href="#/profile/password">Change password</a></li>
+                        <li><a href="#/profile/me">My profile</a></li>
                         <li ng-controller="LogoutController" ng-click="logout()"><a href="#/logout">Logout</a></li>
                     </ul>
                 </div>
