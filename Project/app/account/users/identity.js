@@ -4,6 +4,12 @@ angular.module('issueTrackingSystem.account.users.identity', [])
     .factory('identity', ['BASE_URL', '$q', '$http',
         function (BASE_URL, $q, $http) {
 
+            var projectLeader = false;
+
+            function isProjectLeader(){
+                return projectLeader;
+            }
+
             function getCurrentUser(){
                 var deferred = $q.defer();
 
@@ -32,6 +38,7 @@ angular.module('issueTrackingSystem.account.users.identity', [])
             return {
                 hasLoggedUser: hasLoggedUser,
                 getCurrentUser: getCurrentUser,
-                isAdmin: isAdmin
+                isAdmin: isAdmin,
+                isProjectLeader: isProjectLeader
             };
         }]);

@@ -23,7 +23,25 @@ angular.module('issueTrackingSystem.projects.projects-crud.projectsService', [])
                 return deferred.promise;
             }
 
+            function getProjectIssues(projectId){
+                var deferred = $q.defer();
+
+                var url = BASE_URL + 'projects/' + projectId + '/Issues';
+
+                $http.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.authToken;
+                $http.get(url)
+                    .then(function(response){
+                        console.log(response);
+                        deferred.resolve(response);
+                    }, function(err){
+                        deferred.reject(err);
+                    });
+
+                return deferred.promise;
+            }
+
             return {
-                getProjectById: getProjectById
+                getProjectById: getProjectById,
+                getProjectIssues: getProjectIssues
             }
         }]);
