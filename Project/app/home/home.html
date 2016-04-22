@@ -29,10 +29,19 @@
 </div>
 <div class="jumbotron container" ng-if="hasLoggedUser()">
     <div class="col-md-5">
+        <a href="#/projects/add"><button type="button" class="btn  btn-info" ng-if="isAdmin()">Add new project</button></a>
+        <a href="#/projects"><button type="button" class="btn  btn-info" ng-if="isAdmin()">All projects</button></a>
         <h2>Dashboard</h2>
-        <h3>Affiliated projects</h3>
-        <a href="#/projects/add"><button type="button" class="btn btn-lg btn-info" ng-if="isAdmin()">Add new project</button></a>
-        <a href="#/projects"><button type="button" class="btn btn-lg btn-info" ng-if="isAdmin()">All projects</button></a>
+        <h3>My lead projects</h3>
+        <table class="table">
+            <tr ng-repeat="project in projectsWhereLead">
+                <td><a href="#projects/{{project.Id}}">{{project.Name}}</a></td>
+            </tr>
+        </table>
+        <pagination  ng-if="showProjectsPagination" total-items="projectsCount" ng-model="projectsParams.pageNumber"
+                     items-per-page="projectsParams.pageSize" ng-change="getAssociatedProjects()"
+                     max-size="5" boundary-links="true" class="aligner">
+        </pagination>
     </div>
     <div class="col-md-7">
         <table class="table">
@@ -48,12 +57,12 @@
             <tr ng-repeat="issue in userIssues">
                 <td><a href="#issues/{{issue.Id}}">{{issue.Title}}</a></td>
                 <td>{{issue.Description}}</td>
-                <td>{{issue.Project.Name}}</td>
+                <td><a href="#projects/{{issue.Project.Id}}">{{issue.Project.Name}}</a></td>
                 <td>{{issue.DueDate}}</td>
             </tr>
             </tbody>
         </table>
-        <pagination total-items="issuesCount" ng-model="issuesParams.pageNumber"
+        <pagination ng-if="showIssuesPagination" total-items="issuesCount" ng-model="issuesParams.pageNumber"
                     items-per-page="issuesParams.pageSize" ng-change="getUserIssues()"
                     max-size="9" boundary-links="true" class="aligner">
         </pagination>

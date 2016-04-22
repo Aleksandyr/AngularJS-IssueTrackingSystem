@@ -22,7 +22,28 @@ angular.module('issueTrackingSystem.home.homeService', [])
             return deferred.promise;
         }
 
+        function getUserProjectsWhereIsLead(pageParams){
+            var deferred = $q.defer();
+
+            var id = JSON.parse(sessionStorage['currentUser']).Id;
+            var url = BASE_URL + 'projects?filter=Lead.Id="' + id + '"&pageSize=' +
+                pageParams.pageSize +
+                '&pageNumber=' +
+                pageParams.pageNumber;
+
+            $http.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.authToken;
+            $http.get(url)
+                .then(function(response){
+                    deferred.resolve(response.data);
+                }, function(err){
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        }
+
         return {
-            getUserIssues: getUserIssues
+            getUserIssues: getUserIssues,
+            getUserProjectsWhereIsLead: getUserProjectsWhereIsLead
         }
     }]);

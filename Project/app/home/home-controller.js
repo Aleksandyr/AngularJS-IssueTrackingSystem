@@ -25,6 +25,11 @@ angular.module('issueTrackingSystem.home', [
                 pageNumber: 1
             };
 
+            $scope.projectsParams = {
+                pageSize: 7,
+                pageNumber: 1
+            };
+
             $scope.getUserIssues = function(){
                 homeService.getUserIssues($scope.issuesParams)
                     .then(function success(data){
@@ -34,7 +39,20 @@ angular.module('issueTrackingSystem.home', [
                     }, function error(err){
                         notyService.showError('Cannot load issus at the moment!');
                     })
-            }
+            };
+
+            $scope.getAssociatedProjects  = function(){
+                homeService.getUserProjectsWhereIsLead($scope.projectsParams)
+                    .then(function success(data){
+                        $scope.projectsWhereLead = data.Projects;
+                        $scope.showProjectsPagination  = data.TotalPages > 1;
+                        $scope.projectsCount  = data.TotalPages * $scope.projectsParams.pageSize;
+                    }, function error(err){
+                        notyService.showError('Cannot load projects at the moment!');
+                    })
+            };
+
+
 
             $scope.login = function(user){
                 authentication.loginUser(user)
@@ -68,5 +86,6 @@ angular.module('issueTrackingSystem.home', [
 
             if($scope.hasLoggedUser()){
                 $scope.getUserIssues();
+                $scope.getAssociatedProjects();
             }
         }]);
