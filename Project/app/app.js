@@ -5,6 +5,7 @@ angular.module('issueTrackingSystem', [
     'ui.bootstrap.pagination',
 
     'issueTrackingSystem.home',
+    'issueTrackingSystem.home.homeService',
 
     'issueTrackingSystem.common.notyService',
     'issueTrackingSystem.common.mainController',

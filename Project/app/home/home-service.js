@@ -1,15 +1,20 @@
 'use strict';
 
-angular.module('issueTrackingSystem.home.commonService', [])
-    .factory('commonService', ['$http','$q','BASE_URL',function($http, $q, BASE_URL){
+angular.module('issueTrackingSystem.home.homeService', [])
+    .factory('homeService', ['$http','$q','BASE_URL',function($http, $q, BASE_URL){
 
-        function getUserIssues(){
+        function getUserIssues(pageParams){
             var deferred = $q.defer();
 
+            var url = BASE_URL + 'issues/me?orderBy=DueDate desc&pageSize=' +
+                pageParams.pageSize +
+                '&pageNumber=' +
+                pageParams.pageNumber;
+
             $http.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.authToken;
-            $http.get(BASE_URL + 'Users/')
+            $http.get(url)
                 .then(function(response){
-                    deferred.resolve(response);
+                    deferred.resolve(response.data);
                 }, function(err){
                     deferred.reject(err);
                 });
