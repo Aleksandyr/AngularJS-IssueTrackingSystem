@@ -1,20 +1,21 @@
 'use strict';
 
-angular.module('issueTrackingSystem.projects,allProjects.allProjectsService', [])
-    .factory('allProjectsService', [
+angular.module('issueTrackingSystem.projects.projects-crud.projectsService', [])
+    .factory('projectsService', [
         '$http',
         '$q',
         'BASE_URL',
         function($http, $q, BASE_URL){
-            function getAllProjects(projectsParams){
+            function getProjectById(projectId){
                 var deferred = $q.defer();
 
-                var url = BASE_URL + 'projects?filter=&pageSize=' + projectsParams.pageSize + '&pageNumber=' + projectsParams.pageNumber;
+                var url = BASE_URL + 'projects/' + projectId;
 
                 $http.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.authToken;
                 $http.get(url)
                     .then(function(response){
-                        deferred.resolve(response.data);
+                        console.log(response);
+                        deferred.resolve(response);
                     }, function(err){
                         deferred.reject(err);
                     });
@@ -23,6 +24,6 @@ angular.module('issueTrackingSystem.projects,allProjects.allProjectsService', []
             }
 
             return {
-                getAllProjects: getAllProjects
+                getProjectById: getProjectById
             }
-    }]);
+        }]);
