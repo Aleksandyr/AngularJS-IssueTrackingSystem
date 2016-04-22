@@ -34,7 +34,7 @@ angular.module('issueTrackingSystem.home', [
                 homeService.getUserIssues($scope.issuesParams)
                     .then(function success(data){
                         $scope.userIssues = data.Issues;
-                        $scope.showIssuesPageination = data.TotalPages > 1;
+                        $scope.showIssuesPagination = data.TotalPages > 1;
                         $scope.issuesCount = data.TotalPages * $scope.issuesParams.pageSize;
                     }, function error(err){
                         notyService.showError('Cannot load issus at the moment!');
