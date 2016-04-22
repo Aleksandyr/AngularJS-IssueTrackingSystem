@@ -58,12 +58,13 @@ angular.module('issueTrackingSystem.home', [
                 authentication.loginUser(user)
                     .then(function(loggedInUser){
                         sessionStorage['authToken'] = loggedInUser.access_token;
-                        $location.path('/dashboard');
+                        $scope.getUserIssues();
                         notyService.showSuccess('Login successful!');
                         identity.getCurrentUser()
                             .then(
                                 function(data){
                                     sessionStorage['currentUser'] = JSON.stringify(data)
+                                    $scope.getAssociatedProjects();
                                 }, function(err){
                                     console.log(err);
                                 })
