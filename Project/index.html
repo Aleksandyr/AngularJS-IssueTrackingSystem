@@ -29,7 +29,6 @@
                     </ul>
                     <ul ng-if="hasLoggedUser()" class="nav navbar-nav navbar-right">
                         <li><a href="#/profile/password">Change password</a></li>
-                        <li><a href="#/profile/me">My profile</a></li>
                         <li ng-click="logout()"><a href="#/logout">Logout</a></li>
                     </ul>
                 </div>
@@ -39,36 +38,40 @@
         <div ng-view />
     </div>
 
-    <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="app/bower_components/angular/angular.js"></script>
-    <script src="app/bower_components/angular-route/angular-route.js"></script>
-    <script src="app/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
-    <script src="app/bower_components/angular-ui-bootstrap-pagination/pagination.js"></script>
+        <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="app/bower_components/angular/angular.js"></script>
+        <script src="app/bower_components/angular-route/angular-route.js"></script>
+        <script src="app/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+        <script src="app/bower_components/angular-ui-bootstrap-pagination/pagination.js"></script>
 
-    <script src="app/app.js"></script>
+        <script src="app/app.js"></script>
 
-    <!-- Home scripts -->
-    <script src="app/home/home-controller.js"></script>
-    <script src="app/home/home-service.js"></script>
+        <!-- Home scripts -->
+        <script src="app/home/home-controller.js"></script>
+        <script src="app/home/home-service.js"></script>
 
-    <!--Common scripts-->
-    <script src="app/common/main-controller.js"></script>
-    <script src="app/common/noty-service.js"></script>
-    <script src="app/common/main-service.js"></script>
-    <script src="app/common/confirmDirective/confirm-directive.js"></script>
+        <!--Common scripts-->
+        <script src="app/common/main-controller.js"></script>
+        <script src="app/common/noty-service.js"></script>
+        <script src="app/common/main-service.js"></script>
+        <script src="app/common/confirmDirective/confirm-directive.js"></script>
 
 
-    <!--Account scripts-->
-    <script src="app/account/users/authentication.js"></script>
-    <script src="app/account/users/identity.js"></script>
-    <script src="app/account/changePassword/change-password-service.js"></script>
-    <script src="app/account/changePassword/change-password-controller.js"></script>
+        <!--Account scripts-->
+        <script src="app/account/users/authentication.js"></script>
+        <script src="app/account/users/identity.js"></script>
+        <script src="app/account/changePassword/change-password-service.js"></script>
+        <script src="app/account/changePassword/change-password-controller.js"></script>
 
-    <!--Admin scripts-->
-    <script src="app/admin/admin-service.js"></script>
-    <script src="app/admin/admin-controller.js"></script>
+        <!--Admin scripts-->
+        <script src="app/admin/admin-service.js"></script>
+        <script src="app/admin/admin-controller.js"></script>
+
+        <!--Projects scripts-->
+        <script src="app/projects/allProjects/all-projects-service.js"></script>
+        <script src="app/projects/allProjects/all-projects-controller.js"></script>
 
     </body>
 </html>

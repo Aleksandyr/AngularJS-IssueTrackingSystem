@@ -1,0 +1,26 @@
+<div class="jumbotron container">
+    <div class="col-md-5">
+        <h2>PROJECTS</h2>
+        <a ng-if="isAdmin()" class="btn btn-info" href="#/projects/add">Add new project</a>
+    </div>
+    <div class="col-md-7">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>View</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="project in allProjects">
+                <td>{{project.Name}}</td>
+                <td><a class="btn btn-info" href="#projects/{{project.Id}}">View</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <pagination total-items="projectsCount" ng-model="projectsParams.pageNumber"
+                    items-per-page="projectsParams.pageSize" ng-change="getAllProjects()"
+                    max-size="9" boundary-links="true" class="aligner">
+        </pagination>
+    </div>
+</div>
