@@ -19,20 +19,6 @@
                 <option value="4">Stoped progress</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="authorSelect">Filter by author</label>
-            <select class="form-control" id="authorSelect" ng-model="authorFilter">
-                <option value="" selected>Select author</option>
-                <option ng-repeat="author in authors" value="{{author[1]}}">{{author[0]}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="assigneeSelect">Filter by assignee</label>
-            <select class="form-control" id="assigneeSelect" ng-model="assigneeFilter">
-                <option value="" selected>Select assignee</option>
-                <option ng-repeat="assignee in assignees" value="{{assignee[1]}}">{{assignee[0]}}</option>
-            </select>
-        </div>
     </div>
     <div class="col-md-7">
         <table class="table table-hover">
@@ -47,9 +33,7 @@
             <tbody>
 
             <tr ng-repeat="issue in projectIssues
-            |filter:{Status: {Id:statusFilter||'!!'}}
-            |filter: {Assignee: {Id: assigneeFilter||'!!'}}
-            |filter: {Author: {Id: authorFilter||'!!'}}">
+            |filter:{Status: {Id:statusFilter||'!!'}}">
                 <td><a href="#issues/{{issue.Id}}">{{issue.Title}}</a></td>
                 <td>{{issue.Description}}</td>
                 <td>{{issue.DueDate}}</td>

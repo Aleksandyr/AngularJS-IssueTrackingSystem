@@ -14,7 +14,6 @@ angular.module('issueTrackingSystem.projects.projects-crud.projectsService', [])
                 $http.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.authToken;
                 $http.get(url)
                     .then(function(response){
-                        console.log(response);
                         deferred.resolve(response);
                     }, function(err){
                         deferred.reject(err);
@@ -31,7 +30,6 @@ angular.module('issueTrackingSystem.projects.projects-crud.projectsService', [])
                 $http.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.authToken;
                 $http.get(url)
                     .then(function(response){
-                        console.log(response);
                         deferred.resolve(response);
                     }, function(err){
                         deferred.reject(err);

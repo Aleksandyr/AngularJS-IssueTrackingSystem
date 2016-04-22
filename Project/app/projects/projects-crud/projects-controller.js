@@ -33,23 +33,7 @@ angular.module('issueTrackingSystem.projects.projects-crud.ProjectsController',[
                 projectsService.getProjectIssues(projectId)
                     .then(
                         function success(data){
-                            console.log(data);
                             $scope.projectIssues = data.data;
-                            $scope.authors = [];
-                            $scope.assignees = [];
-                            var hashAuthors = {};
-                            var hashAssignee = {};
-                            data.data.forEach(function(issue){
-                                if(!hashAuthors[issue.Author.Username]){
-                                    hashAuthors[issue.Author.Usrname] = true;
-                                    $scope.authors.push([issue.Author.Username, issue.Author.Id]);
-                                }
-
-                                if(!hashAssignee[issue.Assignee.Username]){
-                                    hashAuthors[issue.Assignee.Username] = true;
-                                    $scope.authors.push([issue.Assignee.Username, issue.Assignee.Id]);
-                                }
-                            });
                         }, function error(err){
                             notyService.showError('Cannot load issues for this project');
                         }
