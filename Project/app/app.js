@@ -19,7 +19,9 @@ angular.module('issueTrackingSystem', [
     'issueTrackingSystem.admin.adminService',
     'issueTrackingSystem.admin.adminController',
 
-    'issueTrackingSystem.projects.ProjectsController'
+    'issueTrackingSystem.projects.allProjects.AllProjectsController',
+    'issueTrackingSystem.projects.addProject.AddProjectController',
+    'issueTrackingSystem.projects.project.ProjectsController'
 ])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/')
     .config(['$routeProvider', function($routeProvider){
@@ -29,7 +31,6 @@ angular.module('issueTrackingSystem', [
             })
     }])
     .run(['$rootScope', '$location', 'identity', function($rootScope, $location, identity) {
-        //$scope.isAdmin = identity.isAdmin;
 
         $rootScope.$on('$locationChangeStart', function(event) {
             if(!identity.hasLoggedUser()) {
