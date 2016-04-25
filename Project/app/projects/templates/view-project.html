@@ -1,24 +1,13 @@
 <div class="jumbotron container">
     <div class="col-md-5">
-        <h2>{{project.ProjectKey}}</h2>
+        <h2>{{project.Name}}</h2>
         <a ng-if="isAdmin()||isProjectLeader" class="btn btn-info" href="#projects/edit/{{project.Id}}">Edit</a>
         <a ng-if="isAdmin()||isProjectLeader" class="btn btn-info" href="#projects/add-issue/{{project.Id}}">Add Issue</a>
-        <p>Project key: {{project.ProjectKey}}</p>
-        <p><strong>Name:</strong> {{project.Name}}</p>
         <p><strong>Description:</strong> {{project.Description}}</p>
-        <p><strong>LeadId:</strong> ({{project.Lead.Id}}) {{project.Lead.Username}}</p>
+        <p><strong>Lead:</strong> {{project.Lead.Username}}</p>
         <p>Labels: <span ng-repeat="label in project.Labels">{{label.Name}}{{$last ? '' : ', '}}</span></p>
         <p>Priorities: <span ng-repeat="priority in project.Priorities">{{priority.Name}}{{$last ? '' : ', '}}</span></p>
-        <div class="form-group">
-            <label for="selectStatus">Filter by status</label>
-            <select class="form-control" id="selectStatus" ng-model="statusFilter">
-                <option value="" selected>Select status</option>
-                <option value="1">Closed</option>
-                <option value="2">Stopped</option>
-                <option value="3">In progress</option>
-                <option value="4">Stoped progress</option>
-            </select>
-        </div>
+        <div ng-issues-filters></div>
     </div>
     <div class="col-md-7">
         <table class="table table-hover">
