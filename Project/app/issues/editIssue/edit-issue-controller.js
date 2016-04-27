@@ -54,7 +54,8 @@ angular.module('issueTrackingSystem.issues.editIssue.editIssueController', [
                 editIssueService.editIssue(issueToEdit, $routeParams.id)
                     .then(
                         function success(responce){
-                            $location.path('issues/' + responce.data.Id)
+                            notyService.showSuccess('Successfully edited issue!');
+                            $location.path('issues/' + responce.data.Id);
                         },
                         function error(err){
                             notyService.showError('Cannot edit issue at the moment', err);

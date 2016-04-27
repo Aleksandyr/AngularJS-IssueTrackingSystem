@@ -38,10 +38,11 @@ angular.module('issueTrackingSystem.issues.issuePage.addIssueController', [
                 addIssueService.addIssue(issueToAdd)
                     .then(
                         function success(){
-                            $location.path('projects/' + $routeParams.id )
+                            notyService.showError('Successfully added issue!');
+                            $location.path('projects/' + $routeParams.id );
                         },
                         function error(err){
-                            notyService.showError('Cannto add issue', err);
+                            notyService.showError('Cannot add issue', err);
                         }
                     )
             }
