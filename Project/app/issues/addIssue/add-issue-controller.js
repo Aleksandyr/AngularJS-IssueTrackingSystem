@@ -2,7 +2,7 @@ angular.module('issueTrackingSystem.issues.issuePage.addIssueController', [
         'issueTrackingSystem.issues.issuePage.addIssueService'
 ])
     .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/projects/issues/:id', {
+        $routeProvider.when('/projects/addIssue/:id', {
             controller: 'AddIssueController',
             templateUrl: 'app/issues/addIssue/add-issue.html',
             access: {

@@ -25,7 +25,8 @@ angular.module('issueTrackingSystem', [
 
     'issueTrackingSystem.issues.issuePage.issuePageController',
     'issueTrackingSystem.issues.issuePage.issuePageDirectives',
-    'issueTrackingSystem.issues.issuePage.addIssueController'
+    'issueTrackingSystem.issues.issuePage.addIssueController',
+    'issueTrackingSystem.issues.editIssue.editIssueController'
 ])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/')
     .config(['$routeProvider', function($routeProvider){

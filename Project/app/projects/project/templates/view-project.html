@@ -2,7 +2,7 @@
     <div class="col-md-5">
         <h2>{{project.Name}}</h2>
         <a ng-if="isAdmin()||isProjectLeader" class="btn btn-info" href="#projects/edit/{{project.Id}}">Edit</a>
-        <a ng-if="isAdmin()||isProjectLeader" class="btn btn-info" href="#projects/issues/{{project.Id}}">Add Issue</a>
+        <a ng-if="isAdmin()||isProjectLeader" class="btn btn-info" href="#projects/addIssue/{{project.Id}}">Add Issue</a>
         <p><strong>Description:</strong> {{project.Description}}</p>
         <p><strong>Lead:</strong> {{project.Lead.Username}}</p>
         <p>Labels: <span ng-repeat="label in project.Labels">{{label.Name}}{{$last ? '' : ', '}}</span></p>
