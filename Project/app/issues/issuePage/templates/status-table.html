@@ -1,0 +1,15 @@
+<div class="col-md-7">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Available statuses</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="status in currentIssue.AvailableStatuses">
+            <td>-----{{status.Name}}</td>
+            <td ng-if="isAdmin()||isProjectLeader||isAssignee" ng-click="changeStatus(status.Id)"><button  class="btn btn-info" role="button">Change</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

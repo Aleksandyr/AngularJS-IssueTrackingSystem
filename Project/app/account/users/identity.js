@@ -10,6 +10,21 @@ angular.module('issueTrackingSystem.account.users.identity', [])
                 return projectLeader;
             }
 
+            function setProjectLeader (projectId){
+                var deferred = $q.defer();
+
+                $http.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.authToken;
+                $http.get(BASE_URL + 'projects/' + projectId)
+                    .then(function (data) {
+                        projectLeader = data.data.Lead.Id===JSON.parse(sessionStorage.currentUser).Id;
+                        deferred.resolve();
+                    }, function (err) {
+                        deferred.reject(err)
+                    });
+                return deferred.promise;
+
+            }
+
             function getCurrentUser(){
                 var deferred = $q.defer();
 
@@ -39,6 +54,7 @@ angular.module('issueTrackingSystem.account.users.identity', [])
                 hasLoggedUser: hasLoggedUser,
                 getCurrentUser: getCurrentUser,
                 isAdmin: isAdmin,
-                isProjectLeader: isProjectLeader
+                isProjectLeader: isProjectLeader,
+                setProjectLeader: setProjectLeader
             };
         }]);

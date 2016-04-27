@@ -1,0 +1,14 @@
+<div id="comments-container" class="col-md-12">
+    <h2>Comments:</h2>
+    <div id="prev-comments" ng-repeat="comment in comments">
+        <div id="author-info">{{comment.Author.Username}} - {{comment.CreatedOn|date}}</div>
+        <div id="comment-text">{{comment.Text}}</div>
+    </div>
+    <div ng-if="isProjectLeader||isAssignee" class="form-group" id="add-comment-field">
+        <form action="" name="commentsForm">
+            <label for="comment-field">Leave comment:</label>
+            <textarea ng-model="newComment.text" class="form-control" id="comment-field" minlength="2" placeholder="Type text here" required></textarea>
+            <button ng-disabled="commentsForm.$invalid" class="btn btn-info form-control" ng-click="addComment(newComment.text)">Comment</button>
+        </form>
+    </div>
+</div>
