@@ -16,7 +16,7 @@ angular.module('issueTrackingSystem.account.users.identity', [])
                 $http.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.authToken;
                 $http.get(BASE_URL + 'projects/' + projectId)
                     .then(function (data) {
-                        projectLeader = data.data.Lead.Id===JSON.parse(sessionStorage.currentUser).Id;
+                        projectLeader = data.data.Lead.Id === JSON.parse(sessionStorage.currentUser).Id;
                         deferred.resolve();
                     }, function (err) {
                         deferred.reject(err)

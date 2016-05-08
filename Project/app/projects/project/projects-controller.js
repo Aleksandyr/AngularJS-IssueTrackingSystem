@@ -25,12 +25,19 @@ angular.module('issueTrackingSystem.projects.project.ProjectsController',[
         '$routeParams',
         'projectService',
         'notyService',
-        function ViewProjectController($scope, $routeParams, projectService, notyService){
+        'identity',
+        function ViewProjectController($scope, $routeParams, projectService, notyService, identity){
             $scope.getProjectById = function(projectId) {
                 projectService.getProjectById(projectId)
                     .then(
                         function success(data) {
                             $scope.project = data.data;
+                            identity.setProjectLeader($scope.project.Id)
+                                .then(
+                                    function success(){
+                                        $scope.isProjectLeader = identity.isProjectLeader();
+                                    }
+                                );
                         }, function error(err) {
                             notyService.showError('Cannot load project at the moment!');
                         });
